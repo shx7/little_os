@@ -9,6 +9,7 @@
 ;	AUTHOR: 
 ;		Lyblinskii Alexander, 2014
 ;-----------------------------------
+;.CODE
 mov bx, boot_string			; Load address of greeting
 call print_sz				; Print @boot_string on screen
 jmp endless_loop
@@ -18,6 +19,7 @@ jmp endless_loop
 endless_loop:
 	jmp $					; endless loop
 
+;.DATA
 boot_string:
 	db 'I Love Nastia so much:3', 0
 

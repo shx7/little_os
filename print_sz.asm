@@ -11,17 +11,20 @@
 ;-----------------------------------
 print_sz:
 	pusha
-	mov ah, 0x0e				; BIOS print subroutine number
-	add bx, 0x7c00					; Add offset of boot program for loaded in bx string address
+	add bx, 0x7c00					; Calculate effective address of @string_sz, means
+									; Addition loaded in @bx string address offset 
+									; with offset of program(0x7c00) 
 
 	print_sz_print_loop:
-		mov al, [bx]				; Load symbol from address [bx] = [0x7c00 + string_sz]
-		cmp al, 0					; IF nul symbol
-		je print_sz_ret				; return from proc
-		int 0x10					; ELSE Write character in TTY mode
-		inc bx						; get next symbol address
+		mov dx, [bx]				; Load next symbol from address @bx 
+		cmp dx, 0					; IF nul symbol
+		je print_sz_ret				; exit from proc
+		call print_chr				
+		inc bx						; Get addres of next character
 		jmp print_sz_print_loop		; jmp to start of printing loop
 
 	print_sz_ret:
 	popa
 	ret
+
+%include "print_chr.asm"			; Include procedure to pu character to screen
