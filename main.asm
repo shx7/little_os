@@ -16,7 +16,7 @@ call print_sz				; Print @boot_string on screen
 mov ax, 1
 mov bx, 2
 mov cx, 0x35
-mov dx, 10
+mov dx, 106
 call print_cpu_st			; Print @AX, @BX, @DX, @CX values
 jmp endless_loop
 

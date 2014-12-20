@@ -17,6 +17,9 @@
 		push bx
 		push ax
 
+		mov bx, sz_p_cpu_greeting			; Print greeting
+		call print_sz
+
 		mov cx, 0							; @CX contain regs count
 
 		p_cpu_st_print_loop:
@@ -50,6 +53,9 @@
 		db 'BX: ', 0
 		db 'CX: ', 0
 		db 'DX: ', 0
+
+	sz_p_cpu_greeting:
+		db 'CPU state:', 13, 10, 0
 
 %endif
 
