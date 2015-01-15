@@ -30,7 +30,7 @@ endless_loop:
 
 ;.DATA
 boot_string:
-	db 'I Love Nastia so much:3',10, 13, 0
+	db 'Loaded.',10, 13, 0
 
 times 510-($-$$) db 0
 dw 0xaa55						; boot sector signature
