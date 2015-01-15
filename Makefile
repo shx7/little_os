@@ -1,9 +1,12 @@
-AC=nasm
-ACFLAGS=-f bin 
-BIN_NAME=boot_sector.bin
+SUB_DIRS=src
 
-all: 
-	$(AC) main.asm $(ACFLAGS) -o $(BIN_NAME)
+.PHONY: src
+
+all:
+	$(MAKE) -C $(SUB_DIRS)
+
+run:
+	cd build && ./run.sh
 
 clean:
-	rm $(BIN_NAME)
+	rm build/*.bin
